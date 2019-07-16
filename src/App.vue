@@ -29,7 +29,7 @@
                   class="hidden-md-and-up"
           >
           </v-toolbar-side-icon>
-          <v-toolbar-title>Cars</v-toolbar-title>
+          <v-toolbar-title><router-link to="/" tag="span" class="pointer">Car</router-link></v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items class="hidden-sm-and-down">
             <v-btn
@@ -75,7 +75,7 @@ export default {
              {
                  titel: 'Add car',
                  icon: 'note_add',
-                 url: '/add_car'
+                 url: '/add_cars'
              },
              {
                  titel: 'My cars',
@@ -87,3 +87,10 @@ export default {
  }
 }
 </script>
+
+<style scoped>
+ .ponter {
+     cursor: pointer;
+ }
+
+</style>
