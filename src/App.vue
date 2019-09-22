@@ -29,7 +29,9 @@
                   class="hidden-md-and-up"
           >
           </v-toolbar-side-icon>
-          <v-toolbar-title><router-link to="/" tag="span" class="pointer">Car</router-link></v-toolbar-title>
+          <v-toolbar-title>
+              <router-link to="/" tag="span" class="pointer">Car Application</router-link>
+          </v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items class="hidden-sm-and-down">
             <v-btn
@@ -89,7 +91,7 @@ export default {
 </script>
 
 <style scoped>
- .ponter {
+ .pointer {
      cursor: pointer;
  }
 
