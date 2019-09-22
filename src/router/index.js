@@ -7,7 +7,7 @@ import MyCars from '@/components/Ads/MyCars'
 import Login from '@/components/Auth/Login'
 import Registration from '@/components/Auth/Registration'
 import Order from '@/components/User/Orders'
-import Ad from '@/components/Ads/Ad'
+import Car from '@/components/Ads/Car'
 
 Vue.use(Router);
 Vue.use(Exios);
@@ -25,9 +25,10 @@ export default new Router ({
             component: Login
         },
         {
-            path: '/ad/:id',
-            name: 'ad',
-            component: Ad
+            path: '/car/:id',
+            name: 'car',
+            component: Car,
+            props: true
         },
         {
             path: '/registeration',

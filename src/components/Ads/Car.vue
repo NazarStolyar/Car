@@ -4,11 +4,11 @@
             <v-flex xs12>
                <v-card>
                    <v-card-media
-                        src='https://m.atcdn.co.uk/vms/media/03ff2aefd95f451eac48c76544dd6c4a.jpg' >
+                        :src='car.src' >
                    </v-card-media>
                    <v-card-text>
-                        <h1 class="text--primary"> Cars </h1>
-                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium asperiores consectetur, ducimus magni perferendis similique. Consectetur cum doloremque obcaecati. Officia?</p>
+                        <h1 class="text--primary"> {{ car.title }} </h1>
+                        <p>{{ car.description }}</p>
                    </v-card-text>
                    <v-card-actions>
                        <v-spacer></v-spacer>
@@ -23,9 +23,16 @@
 
 <script>
     export default {
+        props: ['id'],
         data() {
             return {
 
+            }
+        },
+        computed: {
+            car () {
+                const id = this.id;
+                return this.$store.getters.byIsCar(id)
             }
         }
     }
