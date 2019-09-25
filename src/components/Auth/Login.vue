@@ -58,12 +58,17 @@
         methods: {
             onSubmit() {
                 if (this.$refs.form.validate()) {
-                   const User = {
+                   const user = {
                        email: this.email,
                        password: this.password
                    };
 
-                   console.log(User);
+                   this.$store.dispatch('loginnUser', user)
+                       .then(() => {
+                           this.$router.push('/');
+                       })
+                       .catch(err => console.log(err))
+
                 }
             }
         }

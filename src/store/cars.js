@@ -1,3 +1,5 @@
+import * as fb from 'firebase'
+
 export default {
     state: {
         cars: [
@@ -32,9 +34,15 @@ export default {
         ]
     },
     mutations: {
-
+        createNewCar(state, payload) {
+            state.cars.push(payload);
+        }
     },
     actions: {
+        createNewCar({commit}, payload) {
+            payload.id = Math.random() * 100;
+            commit('createNewCar', payload)
+        },
 
     },
     getters: {

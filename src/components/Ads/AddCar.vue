@@ -37,7 +37,7 @@
                 <v-layout row class="mb-3">
                     <v-switch
                             v-model="isPromo"
-                            :label="`Show on home page: ${isPromo.toString()}`"
+                            :label="`Show on home page?`"
                     ></v-switch>
                 </v-layout>
                 <v-layout row class="mb-3">
@@ -70,12 +70,16 @@
                 if(this.$refs.form.validate()) {
                     //this will be logic
                     const add = {
-                        isPromo: this.isPromo,
+                        promo: this.isPromo,
                         title: this.titel,
-                        description: this.description
+                        description: this.description,
+                        src: 'https://i.infocar.ua/i/12/1212/1400x936.jpg'
                     };
+
+                    this.$store.dispatch('createNewCar', add);
                 }
-            }
+            },
+
         }
 
     }

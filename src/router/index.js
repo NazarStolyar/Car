@@ -8,6 +8,7 @@ import Login from '@/components/Auth/Login'
 import Registration from '@/components/Auth/Registration'
 import Order from '@/components/User/Orders'
 import Car from '@/components/Ads/Car'
+import Auth from './auth-guard.js'
 
 Vue.use(Router);
 Vue.use(Exios);
@@ -28,7 +29,8 @@ export default new Router ({
             path: '/car/:id',
             name: 'car',
             component: Car,
-            props: true
+            props: true,
+            beforeEnter: Auth,
         },
         {
             path: '/registeration',
@@ -38,17 +40,20 @@ export default new Router ({
         {
             path: '/orders',
             name: 'orders',
-            component: Order
+            component: Order,
+            beforeEnter: Auth,
         },
         {
             path: '/add_cars',
             name: 'add_car',
-            component: AddCart
+            component: AddCart,
+            beforeEnter: Auth,
         },
         {
             path: '/my_cars',
             name: 'my_cars',
-            component: MyCars
+            component: MyCars,
+            beforeEnter: Auth,
         }
     ],
     mode: 'history'

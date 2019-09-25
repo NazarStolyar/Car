@@ -39,7 +39,7 @@
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn @click="onSubmit" :disabled="!valid" color="primary">Create Accounte</v-btn>
+                        <v-btn @click="onSubmit" :loading="loading" :disabled="!valid || loading" color="primary">Create Accounte</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-flex>
@@ -61,7 +61,7 @@
                 ],
                 passRules: [
                     v => !!v || 'Pass is required',
-                    v => v.length >= 6 || 'Pass must be less than 10 characters'
+                    v => v.length >= 6 || 'Pass must be less than 6 characters'
                 ],
                 ConfirmPassRules: [
                     v => !!v || 'Pass is required',
@@ -72,13 +72,23 @@
         methods: {
             onSubmit() {
                 if (this.$refs.form.validate()) {
-                    const User = {
+                    const user = {
                         email: this.email,
                         password: this.password
                     };
 
-                    console.log(User);
+                    this.$store.dispatch('registerUser', user)
+                        .then(() => {
+                            this.$router.push('/')
+                        })
+                        .catch(err => console.log(err))
+
                 }
+            }
+        },
+        computed: {
+            loading () {
+                return this.$store.getters.loading
             }
         }
     }
