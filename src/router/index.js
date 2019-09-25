@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Exios from 'axios'
+import axios from 'axios'
 import Home from '@/components/Home'
 import AddCart from '@/components/Ads/AddCar'
 import MyCars from '@/components/Ads/MyCars'
@@ -11,7 +11,7 @@ import Car from '@/components/Ads/Car'
 import Auth from './auth-guard.js'
 
 Vue.use(Router);
-Vue.use(Exios);
+Vue.use(axios);
 
 export default new Router ({
     routes: [
@@ -30,7 +30,7 @@ export default new Router ({
             name: 'car',
             component: Car,
             props: true,
-            beforeEnter: Auth,
+            // beforeEnter: Auth,
         },
         {
             path: '/registeration',
@@ -41,19 +41,19 @@ export default new Router ({
             path: '/orders',
             name: 'orders',
             component: Order,
-            beforeEnter: Auth,
+            // beforeEnter: Auth,
         },
         {
             path: '/add_cars',
             name: 'add_car',
             component: AddCart,
-            beforeEnter: Auth,
+            // beforeEnter: Auth,
         },
         {
             path: '/my_cars',
             name: 'my_cars',
             component: MyCars,
-            beforeEnter: Auth,
+            // beforeEnter: Auth,
         }
     ],
     mode: 'history'

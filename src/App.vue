@@ -79,6 +79,9 @@ export default {
             this.$router.push('/')
         }
     },
+    mounted() {
+     console.log(this.$store.getters.user)
+    },
     computed: {
         isUserLog () {
          return this.$store.getters.isUserLog;

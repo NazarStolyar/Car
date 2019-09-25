@@ -1,5 +1,16 @@
 import * as fb from 'firebase'
 
+class Car {
+    constructor (title, description, ownerId, src = '', promo = false, id = null) {
+        this.title = title
+        this.description = description
+        this.ownerId = ownerId
+        this.src = src
+        this.promo = promo
+        this.id = id
+    }
+}
+
 export default {
     state: {
         cars: [
@@ -39,11 +50,31 @@ export default {
         }
     },
     actions: {
-        createNewCar({commit}, payload) {
-            payload.id = Math.random() * 100;
-            commit('createNewCar', payload)
-        },
+        async createNewCar ({commit, getters}, payload) {
+            commit('setLoading', true);
+            try {
+                const newCar = new Car(
+                    payload.title,
+                    payload.description,
+                    getters.user.id,
+                    payload.src,
+                    payload.promo
+                )
+                console.log(getters.user);
+                const ad = await fb.database().ref('cars').push(newCar);
 
+                console.log(ad);
+
+                commit('setLoading', false);
+                commit('createNewCar', {
+                    ...newCar,
+                    id: ad.key
+                })
+            } catch (error) {
+                commit('setLoading', false);
+                throw error
+            }
+        }
     },
     getters: {
         cars(state) {

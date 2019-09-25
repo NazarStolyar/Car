@@ -76,7 +76,10 @@
                         src: 'https://i.infocar.ua/i/12/1212/1400x936.jpg'
                     };
 
-                    this.$store.dispatch('createNewCar', add);
+                    this.$store.dispatch('createNewCar', add)
+                    .then(() => {
+                        this.$router.push('/my_cars');
+                    })
                 }
             },
 
